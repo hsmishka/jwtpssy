@@ -1,0 +1,16 @@
+<project>
+	<property name="src" location="src/" />
+	<property name="bin" location="bin/" />
+
+	<target name="clean">
+		<delete>
+			<fileset dir="${bin}" includes="**/*.class" />
+		</delete>
+	</target>
+
+	<target name="compile">
+		<javac srcdir="${src}" destdir="${bin}">
+			<include name = "*/**" />
+		</javac>
+	</target>
+</project>
