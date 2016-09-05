@@ -1,16 +1,33 @@
 <project>
 	<property name="src" location="src/" />
 	<property name="bin" location="bin/" />
+	<property name="class_dir" location="classes" />
 
 	<target name="clean">
+		<delete dir="${class_dir}" />
 		<delete>
-			<fileset dir="${bin}" includes="**/*.class" />
+			<fileset dir="${bin}" includes="*.jar" />
 		</delete>
 	</target>
 
 	<target name="compile">
-		<javac srcdir="${src}" destdir="${bin}">
+		<mkdir dir="${class_dir}" />
+		<javac srcdir="${src}" destdir="${class_dir}">
 			<include name = "*/**" />
 		</javac>
+	</target>
+	
+	<target name="jar" depends="compile">
+		<mkdir dir="" />
+		<jar destfile="${bin}/wtpssy.jar"
+			basedir="${class_dir}">
+			<manifest>
+				<attribute name="Main-Class" value="jwtpssy.JWtPssy" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="run" depends="jar">
+		<java jar="${bin}/wtpssy.jar" fork="true"/>
 	</target>
 </project>

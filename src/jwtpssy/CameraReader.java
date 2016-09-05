@@ -11,7 +11,7 @@ public class CameraReader implements Runnable {
 
   public static final int FPS = 30;
   public static final String RASPIVID =
-      "./raspividyuv " + "-w " + IMG_WIDTH + " -h " + IMG_HEIGHT + // image
+      "bin/raspividyuv " + "-w " + IMG_WIDTH + " -h " + IMG_HEIGHT + // image
                                                                    // dimension
           " -fps " + FPS + // fps
           " -t 0 " + // no timeout
